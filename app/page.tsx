@@ -324,6 +324,9 @@ export default function Page() {
               File an issue here!
             </a>
           </p>
+          <p className="mt-4 text-xs opacity-50">
+            this is fully vibecoded lol, take it as a joke
+          </p>
         </footer>
       </div>
     </div>
