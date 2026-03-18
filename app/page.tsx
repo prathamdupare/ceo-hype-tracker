@@ -196,26 +196,63 @@ export default function Page() {
           <h2 className="mb-6 text-xl font-bold sm:text-2xl">
             All Historical Claims
           </h2>
-          <div className="rounded-md border">
+          <div className="grid gap-4 md:hidden">
+            {historicalClaims.map((claim) => (
+              <Card
+                key={claim.id}
+                className={`p-4 ${(claim.deadline_months ?? 0) > 0 && claim.deadline_months !== null && isBefore(addMonths(parseISO(claim.date_announced + "-01"), claim.deadline_months), TODAY) ? "border-red-500" : ""}`}
+              >
+                <div className="mb-2 flex items-start justify-between gap-2">
+                  <div>
+                    <p className="text-sm font-semibold">{claim.ceo}</p>
+                    <p className="text-xs text-muted-foreground">
+                      {claim.company}
+                    </p>
+                  </div>
+                  <span
+                    className={`inline-flex flex-shrink-0 rounded-full px-2 py-1 text-xs whitespace-nowrap ${
+                      getClaimType(claim) === "Graveyard"
+                        ? "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400"
+                        : getClaimType(claim) === "Active"
+                          ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400"
+                          : "bg-secondary text-secondary-foreground"
+                    }`}
+                  >
+                    {getClaimType(claim)}
+                  </span>
+                </div>
+                <p
+                  className="line-clamp-2 text-xs text-muted-foreground"
+                  title={claim.claim}
+                >
+                  &quot;{claim.claim}&quot;
+                </p>
+                <p className="mt-2 text-xs text-muted-foreground">
+                  {formatDate(claim.date_announced)}
+                </p>
+              </Card>
+            ))}
+          </div>
+          <div className="hidden md:block md:overflow-hidden md:rounded-md md:border">
             <table className="w-full">
               <thead>
                 <tr className="border-b bg-muted/50">
-                  <th className="px-3 py-3 text-left text-xs font-medium sm:text-sm">
+                  <th className="px-4 py-3 text-left text-sm font-medium">
                     CEO
                   </th>
-                  <th className="hidden px-3 py-3 text-left text-xs font-medium sm:text-sm md:table-cell">
+                  <th className="hidden px-4 py-3 text-left text-sm font-medium lg:table-cell">
                     Company
                   </th>
-                  <th className="px-3 py-3 text-left text-xs font-medium sm:text-sm">
+                  <th className="px-4 py-3 text-left text-sm font-medium">
                     Claim
                   </th>
-                  <th className="hidden px-3 py-3 text-left text-xs font-medium sm:text-sm lg:table-cell">
+                  <th className="hidden px-4 py-3 text-left text-sm font-medium xl:table-cell">
                     Date
                   </th>
-                  <th className="px-3 py-3 text-left text-xs font-medium sm:text-sm">
+                  <th className="px-4 py-3 text-left text-sm font-medium">
                     Category
                   </th>
-                  <th className="hidden px-3 py-3 text-left text-xs font-medium sm:text-sm xl:table-cell">
+                  <th className="hidden px-4 py-3 text-left text-sm font-medium 2xl:table-cell">
                     Source
                   </th>
                 </tr>
@@ -223,22 +260,20 @@ export default function Page() {
               <tbody>
                 {historicalClaims.map((claim) => (
                   <tr key={claim.id} className="border-b">
-                    <td className="px-3 py-3 text-xs sm:text-sm">
-                      {claim.ceo}
-                    </td>
-                    <td className="hidden px-3 py-3 text-xs text-muted-foreground sm:text-sm md:table-cell">
+                    <td className="px-4 py-3 text-sm">{claim.ceo}</td>
+                    <td className="hidden px-4 py-3 text-sm text-muted-foreground lg:table-cell">
                       {claim.company}
                     </td>
                     <td
-                      className="max-w-[200px] truncate px-3 py-3 text-xs sm:text-sm"
+                      className="max-w-xs truncate px-4 py-3 text-sm"
                       title={claim.claim}
                     >
                       &quot;{claim.claim}&quot;
                     </td>
-                    <td className="hidden px-3 py-3 text-xs sm:text-sm lg:table-cell">
+                    <td className="hidden px-4 py-3 text-sm xl:table-cell">
                       {formatDate(claim.date_announced)}
                     </td>
-                    <td className="px-3 py-3 text-xs sm:text-sm">
+                    <td className="px-4 py-3 text-sm">
                       <span
                         className={`inline-flex rounded-full px-2 py-1 text-xs whitespace-nowrap ${
                           getClaimType(claim) === "Graveyard"
@@ -251,7 +286,7 @@ export default function Page() {
                         {getClaimType(claim)}
                       </span>
                     </td>
-                    <td className="hidden px-3 py-3 text-xs sm:text-sm xl:table-cell">
+                    <td className="hidden px-4 py-3 text-sm 2xl:table-cell">
                       {claim.source.map((s, i) => (
                         <span key={i}>
                           {i > 0 && (
