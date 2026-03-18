@@ -31,6 +31,7 @@ export default function RootLayout({
         fontSans.variable
       )}
     >
+      <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
       <body>
         <ThemeProvider
           attribute="class"
