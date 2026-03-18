@@ -58,13 +58,15 @@ function ClaimCard({ claim }: { claim: Claim }) {
       className={`group ${isExpired ? "border-red-500 bg-red-50/50 dark:bg-red-950/20" : ""}`}
     >
       <CardHeader className="pb-3">
-        <div className="flex items-start justify-between">
-          <div>
-            <CardTitle className="text-lg font-semibold">{claim.ceo}</CardTitle>
+        <div className="flex items-start justify-between gap-2">
+          <div className="min-w-0 flex-1">
+            <CardTitle className="text-base font-semibold sm:text-lg">
+              {claim.ceo}
+            </CardTitle>
             <p className="text-sm text-muted-foreground">{claim.company}</p>
           </div>
           {isExpired && (
-            <span className="rounded-full bg-red-500 px-2 py-1 text-xs font-bold text-white">
+            <span className="flex-shrink-0 rounded-full bg-red-500 px-2 py-1 text-xs font-bold text-white">
               EXPIRED
             </span>
           )}
@@ -140,20 +142,20 @@ export default function Page() {
   )
 
   return (
-    <div className="min-h-svh p-6">
-      <div className="absolute top-6 right-6">
+    <div className="min-h-svh p-4 sm:p-6">
+      <div className="absolute top-4 right-4 sm:top-6 sm:right-6">
         <ModeToggle />
       </div>
       <div className="mx-auto max-w-6xl space-y-12">
-        <section className="py-12 text-center">
+        <section className="py-8 text-center sm:py-12">
           <div className="inline-flex flex-col items-center">
-            <span className="text-3xl text-muted-foreground">
+            <span className="text-xl text-muted-foreground sm:text-3xl">
               It&apos;s been
             </span>
-            <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-9xl font-black text-transparent">
+            <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-6xl font-black text-transparent sm:text-8xl md:text-9xl">
               {monthsSinceMostRecent}
             </span>
-            <span className="text-2xl text-muted-foreground">
+            <span className="text-lg text-muted-foreground sm:text-2xl">
               months since the last &quot;AI will replace programmers&quot;
               claim.
             </span>
@@ -161,11 +163,11 @@ export default function Page() {
         </section>
 
         <section>
-          <h2 className="mb-6 flex items-center gap-2 text-2xl font-bold">
+          <h2 className="mb-6 flex items-center gap-2 text-xl font-bold sm:text-2xl">
             <span className="text-green-500">●</span>
             Active Countdowns
           </h2>
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {activeCountdowns.map((claim) => (
               <ClaimCard key={claim.id} claim={claim} />
             ))}
@@ -176,11 +178,11 @@ export default function Page() {
         </section>
 
         <section>
-          <h2 className="mb-6 flex items-center gap-2 text-2xl font-bold">
+          <h2 className="mb-6 flex items-center gap-2 text-xl font-bold sm:text-2xl">
             <span className="text-red-500">●</span>
             The Graveyard
           </h2>
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {graveyard.map((claim) => (
               <ClaimCard key={claim.id} claim={claim} />
             ))}
@@ -190,28 +192,30 @@ export default function Page() {
           )}
         </section>
 
-        <section>
-          <h2 className="mb-6 text-2xl font-bold">All Historical Claims</h2>
+        <section className="overflow-x-auto">
+          <h2 className="mb-6 text-xl font-bold sm:text-2xl">
+            All Historical Claims
+          </h2>
           <div className="rounded-md border">
-            <table className="w-full">
+            <table className="w-full min-w-[640px]">
               <thead>
                 <tr className="border-b bg-muted/50">
-                  <th className="px-4 py-3 text-left text-sm font-medium">
+                  <th className="px-2 py-3 text-left text-xs font-medium sm:px-4 sm:text-sm">
                     CEO
                   </th>
-                  <th className="px-4 py-3 text-left text-sm font-medium">
+                  <th className="px-2 py-3 text-left text-xs font-medium sm:px-4 sm:text-sm">
                     Company
                   </th>
-                  <th className="px-4 py-3 text-left text-sm font-medium">
+                  <th className="px-2 py-3 text-left text-xs font-medium sm:px-4 sm:text-sm">
                     Claim
                   </th>
-                  <th className="px-4 py-3 text-left text-sm font-medium">
+                  <th className="px-2 py-3 text-left text-xs font-medium sm:px-4 sm:text-sm">
                     Date
                   </th>
-                  <th className="px-4 py-3 text-left text-sm font-medium">
+                  <th className="px-2 py-3 text-left text-xs font-medium sm:px-4 sm:text-sm">
                     Category
                   </th>
-                  <th className="px-4 py-3 text-left text-sm font-medium">
+                  <th className="px-2 py-3 text-left text-xs font-medium sm:px-4 sm:text-sm">
                     Source
                   </th>
                 </tr>
@@ -219,20 +223,22 @@ export default function Page() {
               <tbody>
                 {historicalClaims.map((claim) => (
                   <tr key={claim.id} className="border-b">
-                    <td className="px-4 py-3 text-sm">{claim.ceo}</td>
-                    <td className="px-4 py-3 text-sm text-muted-foreground">
+                    <td className="px-2 py-3 text-xs sm:px-4 sm:text-sm">
+                      {claim.ceo}
+                    </td>
+                    <td className="px-2 py-3 text-xs text-muted-foreground sm:px-4 sm:text-sm">
                       {claim.company}
                     </td>
                     <td
-                      className="max-w-xs truncate px-4 py-3 text-sm"
+                      className="max-w-[120px] truncate px-2 py-3 text-xs sm:max-w-xs sm:px-4 sm:text-sm"
                       title={claim.claim}
                     >
                       &quot;{claim.claim}&quot;
                     </td>
-                    <td className="px-4 py-3 text-sm">
+                    <td className="px-2 py-3 text-xs sm:px-4 sm:text-sm">
                       {formatDate(claim.date_announced)}
                     </td>
-                    <td className="px-4 py-3 text-sm">
+                    <td className="px-2 py-3 text-xs sm:px-4 sm:text-sm">
                       <span
                         className={`inline-flex rounded-full px-2 py-1 text-xs whitespace-nowrap ${
                           getClaimType(claim) === "Graveyard"
@@ -245,7 +251,7 @@ export default function Page() {
                         {getClaimType(claim)}
                       </span>
                     </td>
-                    <td className="px-4 py-3 text-sm">
+                    <td className="px-2 py-3 text-xs sm:px-4 sm:text-sm">
                       {claim.source.map((s, i) => (
                         <span key={i}>
                           {i > 0 && (
