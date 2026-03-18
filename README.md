@@ -21,4 +21,4 @@ This project documents predictions from tech industry leaders about AI's impact 
 
 ## Contributing
 
-Found a prediction we missed? [File an issue](https://github.com/prathamdupare/ceo-hype-tracker) to let us know!
+Found a prediction we missed? [File an issue](https://github.com/prathamdupare/ceo-hype-tracker/issues) to let us know!

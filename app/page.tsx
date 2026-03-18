@@ -275,7 +275,7 @@ export default function Page() {
           <p>
             You think the data is wrong?{" "}
             <a
-              href="https://github.com/prathamdupare/ceo-hype-tracker"
+              href="https://github.com/prathamdupare/ceo-hype-tracker/issues"
               target="_blank"
               rel="noopener noreferrer"
               className="text-blue-500 hover:underline"
