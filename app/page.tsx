@@ -159,6 +159,17 @@ export default function Page() {
               months since the last &quot;AI will replace programmers&quot;
               claim.
             </span>
+            <span className="mt-4 text-sm text-muted-foreground">
+              You think the data is wrong?{" "}
+              <a
+                href="https://github.com/prathamdupare/ceo-hype-tracker/issues"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-500 hover:underline"
+              >
+                File an issue here!
+              </a>
+            </span>
           </div>
         </section>
 
@@ -265,7 +276,7 @@ export default function Page() {
                       {claim.company}
                     </td>
                     <td
-                      className="max-w-xs truncate px-4 py-3 text-sm"
+                      className="max-w-xs truncate px-4 py-3 text-sm xl:max-w-2xl xl:break-words xl:whitespace-normal"
                       title={claim.claim}
                     >
                       &quot;{claim.claim}&quot;
@@ -313,18 +324,7 @@ export default function Page() {
         </section>
 
         <footer className="mt-12 text-center text-sm text-muted-foreground">
-          <p>
-            You think the data is wrong?{" "}
-            <a
-              href="https://github.com/prathamdupare/ceo-hype-tracker/issues"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-500 hover:underline"
-            >
-              File an issue here!
-            </a>
-          </p>
-          <p className="mt-4 text-xs opacity-50">
+          <p className="text-xs opacity-50">
             this is fully vibecoded lol, take it as a joke
           </p>
         </footer>
