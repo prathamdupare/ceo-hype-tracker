@@ -12,13 +12,6 @@ This project documents predictions from tech industry leaders about AI's impact 
 - **The Graveyard**: Predictions where the deadline has passed but programmers still exist
 - **Historical Claims**: Complete database of all tracked predictions with sources
 
-## Tech Stack
-
-- Next.js 16
-- Tailwind CSS
-- Shadcn UI
-- date-fns
-
 ## Contributing
 
 Found a prediction we missed? [File an issue](https://github.com/prathamdupare/ceo-hype-tracker/issues) to let us know!
