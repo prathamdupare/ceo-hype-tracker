@@ -192,30 +192,30 @@ export default function Page() {
           )}
         </section>
 
-        <section className="overflow-x-auto">
+        <section>
           <h2 className="mb-6 text-xl font-bold sm:text-2xl">
             All Historical Claims
           </h2>
           <div className="rounded-md border">
-            <table className="w-full min-w-[640px]">
+            <table className="w-full">
               <thead>
                 <tr className="border-b bg-muted/50">
-                  <th className="px-2 py-3 text-left text-xs font-medium sm:px-4 sm:text-sm">
+                  <th className="px-3 py-3 text-left text-xs font-medium sm:text-sm">
                     CEO
                   </th>
-                  <th className="px-2 py-3 text-left text-xs font-medium sm:px-4 sm:text-sm">
+                  <th className="hidden px-3 py-3 text-left text-xs font-medium sm:text-sm md:table-cell">
                     Company
                   </th>
-                  <th className="px-2 py-3 text-left text-xs font-medium sm:px-4 sm:text-sm">
+                  <th className="px-3 py-3 text-left text-xs font-medium sm:text-sm">
                     Claim
                   </th>
-                  <th className="px-2 py-3 text-left text-xs font-medium sm:px-4 sm:text-sm">
+                  <th className="hidden px-3 py-3 text-left text-xs font-medium sm:text-sm lg:table-cell">
                     Date
                   </th>
-                  <th className="px-2 py-3 text-left text-xs font-medium sm:px-4 sm:text-sm">
+                  <th className="px-3 py-3 text-left text-xs font-medium sm:text-sm">
                     Category
                   </th>
-                  <th className="px-2 py-3 text-left text-xs font-medium sm:px-4 sm:text-sm">
+                  <th className="hidden px-3 py-3 text-left text-xs font-medium sm:text-sm xl:table-cell">
                     Source
                   </th>
                 </tr>
@@ -223,22 +223,22 @@ export default function Page() {
               <tbody>
                 {historicalClaims.map((claim) => (
                   <tr key={claim.id} className="border-b">
-                    <td className="px-2 py-3 text-xs sm:px-4 sm:text-sm">
+                    <td className="px-3 py-3 text-xs sm:text-sm">
                       {claim.ceo}
                     </td>
-                    <td className="px-2 py-3 text-xs text-muted-foreground sm:px-4 sm:text-sm">
+                    <td className="hidden px-3 py-3 text-xs text-muted-foreground sm:text-sm md:table-cell">
                       {claim.company}
                     </td>
                     <td
-                      className="max-w-[120px] truncate px-2 py-3 text-xs sm:max-w-xs sm:px-4 sm:text-sm"
+                      className="max-w-[200px] truncate px-3 py-3 text-xs sm:text-sm"
                       title={claim.claim}
                     >
                       &quot;{claim.claim}&quot;
                     </td>
-                    <td className="px-2 py-3 text-xs sm:px-4 sm:text-sm">
+                    <td className="hidden px-3 py-3 text-xs sm:text-sm lg:table-cell">
                       {formatDate(claim.date_announced)}
                     </td>
-                    <td className="px-2 py-3 text-xs sm:px-4 sm:text-sm">
+                    <td className="px-3 py-3 text-xs sm:text-sm">
                       <span
                         className={`inline-flex rounded-full px-2 py-1 text-xs whitespace-nowrap ${
                           getClaimType(claim) === "Graveyard"
@@ -251,7 +251,7 @@ export default function Page() {
                         {getClaimType(claim)}
                       </span>
                     </td>
-                    <td className="px-2 py-3 text-xs sm:px-4 sm:text-sm">
+                    <td className="hidden px-3 py-3 text-xs sm:text-sm xl:table-cell">
                       {claim.source.map((s, i) => (
                         <span key={i}>
                           {i > 0 && (
