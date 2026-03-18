@@ -141,6 +141,8 @@ export default function Page() {
       parseISO(a.date_announced + "-01").getTime()
   )
 
+  const latestClaim = historicalClaims[0]
+
   return (
     <div className="min-h-svh p-4 sm:p-6">
       <div className="absolute top-4 right-4 sm:top-6 sm:right-6">
@@ -170,10 +172,21 @@ export default function Page() {
                 File an issue here!
               </a>
             </span>
+            {latestClaim && (
+              <a
+                href="#all-claims"
+                className="mt-6 inline-block max-w-md rounded-lg border border-border bg-card p-4 text-left transition-colors hover:bg-accent"
+              >
+                <p className="mb-1 text-xs font-medium text-muted-foreground">
+                  Latest claim by {latestClaim.ceo} ({latestClaim.company})
+                </p>
+                <p className="text-sm">&quot;{latestClaim.claim}&quot;</p>
+              </a>
+            )}
           </div>
         </section>
 
-        <section>
+        <section id="all-claims">
           <h2 className="mb-6 flex items-center gap-2 text-xl font-bold sm:text-2xl">
             <span className="text-green-500">●</span>
             Active Countdowns
@@ -203,7 +216,7 @@ export default function Page() {
           )}
         </section>
 
-        <section>
+        <section id="all-claims">
           <h2 className="mb-6 text-xl font-bold sm:text-2xl">
             All Historical Claims
           </h2>
