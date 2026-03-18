@@ -42,7 +42,7 @@ function getClaimType(claim: Claim): string {
   const { isExpired } = getClaimStats(claim)
 
   if (claim.deadline_months === null) {
-    return "Status Quo"
+    return "Statement"
   }
   if (isExpired) {
     return "Graveyard"
