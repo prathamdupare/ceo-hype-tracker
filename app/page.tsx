@@ -147,13 +147,13 @@ export default function Page() {
       <div className="mx-auto max-w-6xl space-y-12">
         <section className="py-12 text-center">
           <div className="inline-flex flex-col items-center">
-            <span className="text-2xl text-muted-foreground">
+            <span className="text-3xl text-muted-foreground">
               It&apos;s been
             </span>
-            <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-8xl font-black text-transparent">
+            <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-9xl font-black text-transparent">
               {monthsSinceMostRecent}
             </span>
-            <span className="text-xl text-muted-foreground">
+            <span className="text-2xl text-muted-foreground">
               months since the last &quot;AI will replace programmers&quot;
               claim.
             </span>
