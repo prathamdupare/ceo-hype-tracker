@@ -158,7 +158,7 @@ export default function Page() {
               {monthsSinceMostRecent}
             </span>
             <span className="text-lg text-muted-foreground sm:text-2xl">
-              months since the last &quot;AI will replace programmers&quot;
+              {monthsSinceMostRecent === 1 ? "month" : "months"} since the last &quot;AI will replace programmers&quot;
               claim.
             </span>
             <span className="mt-4 text-sm text-muted-foreground">
