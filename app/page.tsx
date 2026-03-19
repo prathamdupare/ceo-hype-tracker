@@ -88,8 +88,8 @@ function ClaimCard({ claim }: { claim: Claim }) {
               className={`font-mono font-medium ${isExpired ? "text-red-500" : "text-green-600 dark:text-green-400"}`}
             >
               {isExpired
-                ? `Missed by ${Math.abs(monthsRemaining!)} months`
-                : `${monthsRemaining} months remaining`}
+                ? `Missed by ${Math.abs(monthsRemaining!)} ${Math.abs(monthsRemaining!) === 1 ? "month" : "months"}`
+                : `${monthsRemaining} ${monthsRemaining === 1 ? "month" : "months"} remaining`}
             </span>
           )}
         </div>
@@ -158,8 +158,8 @@ export default function Page() {
               {monthsSinceMostRecent}
             </span>
             <span className="text-lg text-muted-foreground sm:text-2xl">
-              {monthsSinceMostRecent === 1 ? "month" : "months"} since the last &quot;AI will replace programmers&quot;
-              claim.
+              {monthsSinceMostRecent === 1 ? "month" : "months"} since the last
+              &quot;AI will replace programmers&quot; claim.
             </span>
             <span className="mt-4 text-sm text-muted-foreground">
               You think the data is wrong?{" "}
