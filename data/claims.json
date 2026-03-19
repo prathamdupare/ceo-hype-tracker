@@ -110,5 +110,23 @@
         "url": "https://www.moneycontrol.com/technology/nvidia-ceo-jensen-huang-wants-engineers-to-stop-coding-and-start-thinking-here-s-why-article-13779073.html"
       }
     ]
+  },
+  {
+    "id": "tesla-elon-2026-02",
+    "ceo": "Elon Musk",
+    "company": "Tesla / xAI",
+    "claim": "I think actually things will move, maybe even by the end of this year, to where you don't even bother doing coding, the AI just creates the binary directly... ",
+    "date_announced": "2026-02",
+    "deadline_months": 10,
+    "source": [
+      {
+        "label": "Moneycontrol coverage",
+        "url": "https://www.moneycontrol.com/technology/elon-musk-on-the-future-of-programming-coding-may-not-exist-as-a-profession-by-article-13825490.html"
+      },
+      {
+        "label": "LinkedIn transcript clip",
+        "url": "https://www.linkedin.com/posts/miklostoth_by-the-end-of-this-year-you-dont-even-activity-7429047476591951872-ZCNV/"
+      }
+    ]
   }
 ]
