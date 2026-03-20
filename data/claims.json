@@ -128,5 +128,23 @@
         "url": "https://www.linkedin.com/posts/miklostoth_by-the-end-of-this-year-you-dont-even-activity-7429047476591951872-ZCNV/"
       }
     ]
+  },
+  {
+    "id": "nvidia-jensen-2026-03",
+    "ceo": "Jensen Huang",
+    "company": "NVIDIA",
+    "claim": "If that $500,000 engineer did not consume at least $250,000 worth of tokens, I am going to be deeply alarmed. This is no different than a chip designer who says 'I'm just going to use paper and pencil. I don't think I'm going to need any CAD tools.'",
+    "date_announced": "2026-03",
+    "deadline_months": null,
+    "source": [
+      {
+        "label": "YouTube interview",
+        "url": "https://youtu.be/gwW8GKwHB3I?t=1468"
+      },
+      {
+        "label": "Twitter/X clip",
+        "url": "https://x.com/TFTC21/status/2034725105285353962"
+      }
+    ]
   }
 ]

@@ -9,6 +9,8 @@ import {
   format,
 } from "date-fns"
 
+export const dynamic = "force-dynamic"
+
 interface Claim {
   id: string
   ceo: string
@@ -19,7 +21,7 @@ interface Claim {
   source: { label: string; url: string }[]
 }
 
-const TODAY = new Date("2026-03-01")
+const TODAY = new Date()
 
 function formatDate(dateStr: string): string {
   const date = parseISO(dateStr + "-01")
