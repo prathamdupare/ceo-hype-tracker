@@ -146,5 +146,23 @@
         "url": "https://x.com/TFTC21/status/2034725105285353962"
       }
     ]
+  },
+  {
+    "id": "nvidia-jensen-2026-03-agi",
+    "ceo": "Jensen Huang",
+    "company": "NVIDIA",
+    "claim": "I think we've achieved AGI.",
+    "date_announced": "2026-03",
+    "deadline_months": null,
+    "source": [
+      {
+        "label": "The Verge coverage",
+        "url": "https://www.theverge.com/ai-artificial-intelligence/899086/jensen-huang-nvidia-agi"
+      },
+      {
+        "label": "Lex Fridman Podcast #494",
+        "url": "https://youtu.be/vif8NQcjVf0?t=6986"
+      }
+    ]
   }
 ]

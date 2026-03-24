@@ -137,11 +137,15 @@ export default function Page() {
     return isExpired
   })
 
-  const historicalClaims = [...allClaims].sort(
-    (a, b) =>
-      parseISO(b.date_announced + "-01").getTime() -
-      parseISO(a.date_announced + "-01").getTime()
-  )
+  const historicalClaims = [...allClaims]
+    .map((claim, index) => ({ claim, index }))
+    .sort((a, b) => {
+      const dateDiff =
+        parseISO(b.claim.date_announced + "-01").getTime() -
+        parseISO(a.claim.date_announced + "-01").getTime()
+      return dateDiff !== 0 ? dateDiff : b.index - a.index
+    })
+    .map(({ claim }) => claim)
 
   const latestClaim = historicalClaims[0]
 
