@@ -57,7 +57,7 @@ function ClaimCard({ claim }: { claim: Claim }) {
 
   return (
     <Card
-      className={`group ${isExpired ? "border-red-500 bg-red-50/50 dark:bg-red-950/20" : ""}`}
+      className={`group ${isExpired ? "border-destructive bg-destructive/5" : ""}`}
     >
       <CardHeader className="pb-3">
         <div className="flex items-start justify-between gap-2">
@@ -68,7 +68,7 @@ function ClaimCard({ claim }: { claim: Claim }) {
             <p className="text-sm text-muted-foreground">{claim.company}</p>
           </div>
           {isExpired && (
-            <span className="flex-shrink-0 rounded-full bg-red-500 px-2 py-1 text-xs font-bold text-white">
+            <span className="flex-shrink-0 rounded-full bg-destructive px-2 py-1 text-xs font-bold text-destructive-foreground">
               EXPIRED
             </span>
           )}
@@ -87,7 +87,7 @@ function ClaimCard({ claim }: { claim: Claim }) {
           </span>
           {(claim.deadline_months ?? 0) > 0 && (
             <span
-              className={`font-mono font-medium ${isExpired ? "text-red-500" : "text-green-600 dark:text-green-400"}`}
+              className={`font-mono font-medium ${isExpired ? "text-destructive" : "text-primary"}`}
             >
               {isExpired
                 ? `Missed by ${Math.abs(monthsRemaining!)} ${Math.abs(monthsRemaining!) === 1 ? "month" : "months"}`
@@ -103,7 +103,7 @@ function ClaimCard({ claim }: { claim: Claim }) {
                 href={s.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs text-blue-500 hover:underline"
+                className="text-xs text-accent-foreground hover:underline"
               >
                 {s.label}
               </a>
@@ -160,7 +160,7 @@ export default function Page() {
             <span className="text-xl text-muted-foreground sm:text-3xl">
               It&apos;s been
             </span>
-            <span className="bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 bg-clip-text text-6xl font-black text-transparent sm:text-8xl md:text-9xl">
+            <span className="text-6xl font-black text-primary sm:text-8xl md:text-9xl">
               {monthsSinceMostRecent}
             </span>
             <span className="text-lg text-muted-foreground sm:text-2xl">
@@ -173,7 +173,7 @@ export default function Page() {
                 href="https://github.com/prathamdupare/ceo-hype-tracker/issues"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-blue-500 hover:underline"
+                className="text-primary hover:underline"
               >
                 File an issue here!
               </a>
@@ -181,7 +181,7 @@ export default function Page() {
             {latestClaim && (
               <a
                 href="#all-claims"
-                className="mt-6 inline-block max-w-md rounded-lg border border-border bg-card p-4 text-left transition-colors hover:bg-accent"
+                className="mt-6 inline-block max-w-md rounded-lg border border-border bg-muted p-4 text-left transition-colors hover:bg-accent"
               >
                 <p className="mb-1 text-xs font-medium text-muted-foreground">
                   Latest claim by {latestClaim.ceo} ({latestClaim.company})
@@ -194,7 +194,7 @@ export default function Page() {
 
         <section id="all-claims">
           <h2 className="mb-6 flex items-center gap-2 text-xl font-bold sm:text-2xl">
-            <span className="text-green-500">●</span>
+            <span className="text-primary">●</span>
             Active Countdowns
           </h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -209,7 +209,7 @@ export default function Page() {
 
         <section>
           <h2 className="mb-6 flex items-center gap-2 text-xl font-bold sm:text-2xl">
-            <span className="text-red-500">●</span>
+            <span className="text-destructive">●</span>
             The Graveyard
           </h2>
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -230,7 +230,7 @@ export default function Page() {
             {historicalClaims.map((claim) => (
               <Card
                 key={claim.id}
-                className={`p-4 ${(claim.deadline_months ?? 0) > 0 && claim.deadline_months !== null && isBefore(addMonths(parseISO(claim.date_announced + "-01"), claim.deadline_months), TODAY) ? "border-red-500" : ""}`}
+                className={`p-4 ${(claim.deadline_months ?? 0) > 0 && claim.deadline_months !== null && isBefore(addMonths(parseISO(claim.date_announced + "-01"), claim.deadline_months), TODAY) ? "border-destructive" : ""}`}
               >
                 <div className="mb-2 flex items-start justify-between gap-2">
                   <div>
@@ -242,10 +242,10 @@ export default function Page() {
                   <span
                     className={`inline-flex flex-shrink-0 rounded-full px-2 py-1 text-xs whitespace-nowrap ${
                       getClaimType(claim) === "Graveyard"
-                        ? "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400"
+                        ? "bg-destructive/10 text-destructive"
                         : getClaimType(claim) === "Active"
-                          ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400"
-                          : "bg-secondary text-secondary-foreground"
+                          ? "bg-primary/10 text-primary"
+                          : "bg-muted text-muted-foreground"
                     }`}
                   >
                     {getClaimType(claim)}
@@ -263,7 +263,7 @@ export default function Page() {
               </Card>
             ))}
           </div>
-          <div className="hidden md:block md:overflow-hidden md:rounded-md md:border">
+          <div className="hidden bg-muted md:block md:overflow-hidden md:rounded-md md:border dark:bg-transparent">
             <table className="w-full">
               <thead>
                 <tr className="border-b bg-muted/50">
@@ -289,7 +289,7 @@ export default function Page() {
               </thead>
               <tbody>
                 {historicalClaims.map((claim) => (
-                  <tr key={claim.id} className="border-b">
+                  <tr key={claim.id} className="border-b even:bg-muted/30">
                     <td className="px-4 py-3 text-sm">{claim.ceo}</td>
                     <td className="hidden px-4 py-3 text-sm text-muted-foreground lg:table-cell">
                       {claim.company}
@@ -307,10 +307,10 @@ export default function Page() {
                       <span
                         className={`inline-flex rounded-full px-2 py-1 text-xs whitespace-nowrap ${
                           getClaimType(claim) === "Graveyard"
-                            ? "bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400"
+                            ? "bg-destructive/10 text-destructive"
                             : getClaimType(claim) === "Active"
-                              ? "bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400"
-                              : "bg-secondary text-secondary-foreground"
+                              ? "bg-primary/10 text-primary"
+                              : "bg-muted text-muted-foreground"
                         }`}
                       >
                         {getClaimType(claim)}
@@ -328,7 +328,7 @@ export default function Page() {
                             href={s.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-blue-500 hover:underline"
+                            className="text-accent-foreground hover:underline"
                           >
                             {s.label}
                           </a>
